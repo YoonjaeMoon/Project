@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="mypage.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top bg-transparent menus">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html">Refresh</a>
+                <div class="d-flex nav-box">
+                    <div class="nav-item"><a class="nav-link" href="#ache-section">Pain Relief</a></div>
+                    <div class="nav-item"><a class="nav-link" href="#calories-section">Exercise Calories</a></div>
+                    <div class="nav-item"><a class="nav-link" href="#recipe-section">Recipe</a></div>
+                    <div class="nav-item my-icon"><a class="nav-link" href="./mypage.html">
+                            <i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i>
+                        </a></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="fullpage">
+        <div class="section info-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="info-text-area ">
+                            <div class="sub-title">How are you today?</div>
+                            <div class="main-title">Tell us about yourself!</div>
+                            <p>We recommend various exercises and recipes!!</p>
+    
+                        </div>
+
+                
+
+                        <div class="self-check-area">
+                            <div class="body-check-area">
+                                <h4>How is your body?</h4>
+                                <button id="button1" onclick="makeAjaxCall('stretching', 'neck', '')">🐢Forward Head Posture</button>
+                                <button id="button3" onclick="makeAjaxCall('strength', 'neck', '')">🤦Cervical Disc</button>
+                                <button id="button3" onclick="makeAjaxCall('strength', 'lower_back', '')">🧎‍♂️Lumbar Disc</button>
+                                <button id="button4" onclick="makeAjaxCall('strength', 'traps', '')">🙆‍♀️Rounded Shoulders</button>
+                            </div>
+
+                            <div class="like-exercise-check-area">
+                                <h4>Favorite exercises?</h4>
+                                <button id="button7">Swim</button>
+                                <button id="button8">Yoga</button>
+                                <button id="button9">Tennis</button>
+                                <button id="button10">Basketball</button>
+                            </div>
+
+                            <div class="like-food-check-area">
+                                <h4>Today's recipe?</h4>
+                                <button>🍅tomato</button>
+                                <button>🥗pasta</button>
+                                <button>🍲soup</button>
+                                <button>🍜noodle</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="plan-style">
+                            <div class="main-title">Record your day!</div>
+                            <div class="plan-input-area">
+                                WATER
+                                <section class="input-area">
+                                    <input type="number" id="plan-water" placeholder="From 1 to 5 glasses!">
+                                    <button id="plan-add-button" class="name-add-button" onclick="planAdd()">Submit</button>
+                                </section>
+                            </div>
+                            <div class="plan-line" id="plan-area">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" data-anchor="ache-section" style="background-color:#f9fafb;">
+            
+            <div class="section" data-anchor="ache-section">
+                <div class="exercise-calories-wrap">
+            
+                    <div class="calories-title-area">
+                        <div class="sub-title">Customized Exercise Methods</div>
+                        <div class="main-title">Check out detailed exercises for each symptom!</div>
+                    </div>
+            
+                    <div class="container mt-2">
+                        <div class="row execmain">
+                            <div id="clickgoto" class="col-md-2 col-sm-12 howto">Optimal Exercise Method</div>
+                            <div id="result" class="col-md-10 col-sm-12">
+                                <div class="exec">
+                                    <div class="linemenuview">Stay healthy with personalized exercises👍</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+            
+                </div>
+            </div>
+        </div>
+
+        <!-- Calories by Exercise Section -->
+        <div class="section" data-anchor="calories-section">
+            <div class="exercise-calories-wrap">
+
+                <!-- Title -->
+                <div class="calories-title-area">
+                    <div class="sub-title">Today's Challenge Exercise</div>
+                    <div class="main-title">Enter your favorite exercise and check the calories!</div>
+                </div>
+
+                <!-- Calories Input & Result Box -->
+                <div class="row exercise-calories">
+
+                    <!-- Input -->
+                    <div class="col-lg-2 exercise-input-area">
+                        <div class="animated-container">
+                            <p id="changingText" class="changing-emoji">⚽</p>
+                        </div>
+                        <div>
+                            <input type="text" id="exerciseInput" class="exercise-input-box" onclick="clearInput()"
+                                placeholder="Enter your favorite exercise">
+                            <button href="" id="exerciseSearch" class="exercise-search-button">Search</button>
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div id="result-area" class="col-lg-2 result-area">
+                        <div class="note-text">How many calories will be burned?</div>
+                    </div>
+                </div>
+
+                <!-- Today's Recommended Exercise -->
+                <section class="recommend-exercise">
+                    <div class="search-guide-title">
+                        <span class="note-title">Recommended Exercise💪</span> <span class="note-text">How about this exercise today?</span>
+                    </div>
+                    <div class="search-guide-img guide-img-wrap">
+                        <div>
+                            <div class="img-container" id="guide-img-riding">
+                                <img
+                                    src="https://mblogthumb-phinf.pstatic.net/MjAyMDA0MjZfMjM2/MDAxNTg3OTA5MTc5NDg3.0iohSesQV9_00xQau8CeQUIHC2RMX3sKSFAPjfm2zZkg.Poi4akhFZRbaLg1yEaf1hxUKFQqK2dMeE8xVugcesK0g.JPEG.bronis_pr/SE-b0d3bdd4-5a34-48c5-a049-9e7b0a891cd6.jpg?type=w800">
+                            </div>
+                            <p>Riding</p>
+                        </div>
+                        <div>
+                            <div class="img-container">
+                                <img
+                                    src="https://mblogthumb-phinf.pstatic.net/MjAyMjA5MjhfMjQz/MDAxNjY0MzYyMTk2ODQ5.0BxLWngd_2lyPCr_PtsJ_2ExTc0c0vRmFo2-V6Jd0asg.pblDogCIG8IHN_qunBEE17VpAHBXKv_CpyzhqXn01gIg.JPEG.mindoongmj/1664362196978.jpg?type=w800">
+                            </div>
+                            <p>Climbing</p>
+                        </div>
+                        <div>
+                            <div class="img-container">
+                                <img
+                                    src="https://www.health.com/thmb/Yv4HuoQyNbHNNxgtOTm63zqxurQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Health-Swimming-080c78802f384a4687df5a3b13d5611e-3719a8e40a3c4c43a63a4d795e47c505.jpg">
+                            </div>
+                            <p>Swim</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="section" data-anchor="recipe-section">
+            <div class="container recipe-area" id="recipe-canarea">
+                <div class="row recipe-title-area">
+                    <div class="sub-title">Today's Meal Recommendations</div>
+                    <div class="main-title">Enter your favorite dish and check the recipe!</div>
+                </div>
+                <div class="row cotent-center">
+                    <div class="col-md-5 recipe">
+                        <div>
+                            <p class="emoji">🍅🥑🥩🥚</p>
+                            <div class="recipe-research">
+                                <input type="text" id="recipe-search-input" placeholder="Enter today's dish" onkeyup="searchEnter()">
+                                <button onclick="getSearchRecipe()">Search</button>
+                            </div>
+                        </div>
+
+                        <div class="recipecard-area">
+                            <div class="recipe-scroll" id="view-recipecard">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 recipetext-area" id="click-recipe-area">
+                        <div class="recipe-alltext">
+                            <div class="recipe-alltext-img"><img
+                                    src="https://cdn.huffingtonpost.kr/news/photo/202110/114008_218464.jpeg"
+                                    width="340"></div>
+                            <h5>How about fried eggs?</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="section fp-auto-height footer-wrap">
+            <div class="container footer">
+                <div class="left">
+                    <h2 class="footer-text">Refresh</h2>
+                    <p class="footer-sub-text">Copyright ⓒ Yoonjae Moon</p>
+                </div>
+                <div class="right">
+                        <i class="fa-brands fa-xl fa-youtube"></i>
+                    <a href="https://github.com/hjlim456/Js-teamProject.git" aria-label="GitHub" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fa-brands fa-xl fa-github"></i>
+                    </a>
+                    <a href="https://www.pipc.go.kr/np/default/page.do?mCode=H010000000" aria-label="Privacy Policy"
+                        target="_blank" rel="noopener noreferrer">
+                        <p class="footer-sub-text">Privacy Policy</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a86c609f7e.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="mypage.js"></script>
+</body>
+
+</html>
