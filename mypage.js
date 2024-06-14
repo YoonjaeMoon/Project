@@ -6,8 +6,6 @@ new fullpage('#fullpage', {
   }
 });
 
-// Exercise Calories Section - Mina
-// Fetch calories API and handle click events
 
 $(document).ready(function () {
   $("#exerciseSearch").click(function () {
@@ -30,13 +28,10 @@ $(document).ready(function () {
   });
 });
 
-// Render calories
 let caloriesRender = () => {
-  // Display a random item from the array
   let randomIndex = Math.floor(Math.random() * resultList.length);
   let randomResult = resultList[randomIndex];
 
-  // Generate HTML
   let resultHTML = "";
   if (resultList.length > 0) {
     resultHTML = `
@@ -57,7 +52,6 @@ let caloriesRender = () => {
   document.getElementById("result-area").innerHTML = resultHTML;
 };
 
-// Button function
 let exerciseSearchButton = document.querySelectorAll(".like-exercise-check-area button");
 exerciseSearchButton.forEach(button => button.addEventListener("click", event => getExerciseKeyButton(event)));
 
@@ -67,7 +61,6 @@ let getExerciseKeyButton = (event) => {
   inputElement.value = `${clickKeyword}`;
 }
 
-// Emoji animation
 let changingText = document.getElementById("changingText");
 let texts = [
   "⛳",  "🤿",  "🎿",  "🏓",  "⚾",  "🏊‍♀️",  "🥊",  
@@ -81,13 +74,11 @@ function changeText() {
 setInterval(changeText, 700);
 changeText();
 
-// Clear input text
 let inputElement = document.getElementById("exerciseInput");
 function clearInput() {
   inputElement.value = "";
 }
 
-// Alert when no input
 let searchButton = document.getElementById("exerciseSearch");
 searchButton.addEventListener("click", function () {
   if (inputElement.value == "") {
@@ -96,7 +87,6 @@ searchButton.addEventListener("click", function () {
   }
 });
 
-// Recipe Area - Soo
 
 const appId = `35ed5796`;
 const recipeId = `fc26eb2e099311839055d866ac9db908`;
@@ -200,30 +190,27 @@ function makeAjaxCall(type, muscle, difficulty) {
   });
 }
 
-// Update result on HTML
 function updateResultOnPage(results) {
   myHtml = '';
 
   const result = results[0];
   myHtml += `<div class="exec">
-    <div class="linemenuview"><div class="linemenu">Difficulty</div><div name="difficulty">${result.difficulty}</div></div>
-    <div class="linemenuview"><div class="linemenu">Equipment</div><div name="equipment">${result.equipment}</div></div>
-    <div class="linemenuview"><div class="linemenu">Instructions</div><div name="instructions">${result.instructions}</div></div>
-    <div class="linemenuview"><div class="linemenu">Muscle</div><div name="muscle">${result.muscle}</div></div>
-    <div class="linemenuview"><div class="linemenu">Exercise Name</div><div name="name">${result.name}</div></div>   
-    <div class="linemenuview"><div class="linemenu">Type</div><div name="type">${result.type}</div></div>                                            
+    <div class="line-menu-view"><div class="line-menu">Difficulty</div><div name="difficulty">${result.difficulty}</div></div>
+    <div class="line-menu-view"><div class="line-menu">Equipment</div><div name="equipment">${result.equipment}</div></div>
+    <div class="line-menu-view"><div class="line-menu">Instructions</div><div name="instructions">${result.instructions}</div></div>
+    <div class="line-menu-view"><div class="line-menu">Muscle</div><div name="muscle">${result.muscle}</div></div>
+    <div class="line-menu-view"><div class="line-menu">Exercise Name</div><div name="name">${result.name}</div></div>   
+    <div class="line-menu-view"><div class="line-menu">Type</div><div name="type">${result.type}</div></div>                                            
   </div>`;
 
   document.getElementById('result').innerHTML = myHtml;
 }
 
 
-// Function to add plan
 const planAdd = () => {
   let userWater = document.getElementById("plan-water").value;
   let waterIcon = "";
 
-  // Validate input
   if (userWater >= 1 && userWater <= 5) {
     for (let i = 0; i < userWater; i++) {
       waterIcon += "💧";
@@ -233,21 +220,17 @@ const planAdd = () => {
     return;
   }
 
-  // Create HTML for the new plan item
   let planAddHTML = `<div class="plan-item">
     <div class="plan-date">${moment().format("MMM D")}</div>
     <div class="plan-water">${waterIcon}</div>
     <div><button class="plan-delete-button" onclick="planDelete(event)" id="plan-delete">🗙</button><div>
   </div>`;
 
-  // Append the new plan item to the plan area
   document.getElementById("plan-area").innerHTML += planAddHTML;
 
-  // Clear the input
   document.getElementById("plan-water").value = "";
 }
 
-// Function to delete a plan item
 const planDelete = (event) => {
   event.target.closest(".plan-item").remove();
 }

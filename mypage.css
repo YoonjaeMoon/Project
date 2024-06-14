@@ -770,14 +770,14 @@ border-radius: 1rem;
   align-items: center;
   }
   
-  .linemenuview {
+  .line-menu-view{
   display: flex;
   align-items: start;
   text-align: left;
   padding: 8px 0;
   }
   
-  .linemenu {
+  .line-menu{
   margin-right: 10px;
   white-space: nowrap;
   background-color: #5A81FA;
@@ -785,10 +785,10 @@ border-radius: 1rem;
   padding: 5px 10px;
   border-radius: 30em;
   display: inline-block;
-  min-width: 80px;
-  max-width: 150px;
+  min-width: 100px;
+  max-width: 200px;
   text-align: center;
-  overflow: hidden;
+  /* overflow: hidden; */
   text-overflow: ellipsis;    
   }
   
